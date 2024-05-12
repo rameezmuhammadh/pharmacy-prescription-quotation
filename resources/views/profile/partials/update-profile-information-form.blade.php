@@ -16,13 +16,14 @@
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
-
+        {{-- Name  --}}
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
+        {{-- Email --}}
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
@@ -45,6 +46,28 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        {{-- Address  --}}
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-area id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $user->address)" required autofocus autocomplete="address" />
+                
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
+        </div>
+
+        {{-- Contact No  --}}
+        <div>
+            <x-input-label for="contact_no" :value="__('Contact No')" />
+            <x-text-input id="contact_no" name="contact_no" type="text" class="mt-1 block w-full" :value="old('contact_no', $user->contact_no)" required autofocus autocomplete="contact_no" />
+            <x-input-error class="mt-2" :messages="$errors->get('contact_no')" />
+        </div>
+
+         {{-- DOB   --}}
+         <div>
+            <x-input-label for="dob" :value="__('Date of Birth')" />
+            <x-text-input id="dob" name="dob" type="date" class="mt-1 block w-full" :value="old('dob', $user->dob)" required autofocus autocomplete="dob" />
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
 
         <div class="flex items-center gap-4">
