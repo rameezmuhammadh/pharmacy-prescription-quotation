@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Prescription;
 use Illuminate\Http\Request;
+use App\Mail\PrescriptionMail;
+use Illuminate\Support\Facades\Mail;
 
 class PrescriptionController extends Controller
 {
@@ -54,6 +56,9 @@ class PrescriptionController extends Controller
         $prescription->delivery_time = $request->delivery_time;
         $prescription->save();
     
+
+        Mail::to('admin@mail.com')->send(new PrescriptionMail());
+        
         return redirect()->route('prescription.index')->with('success', 'Prescription created successfully.');
     }
 
