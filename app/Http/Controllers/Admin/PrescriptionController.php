@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Drug;
 use App\Models\Prescription;
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 
 class PrescriptionController extends Controller
@@ -13,7 +15,7 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        $prescriptions =Prescription::all();
+        $prescriptions = Prescription::all();
         return view('admin.prescription.index', compact('prescriptions'));
     }
 
@@ -38,7 +40,15 @@ class PrescriptionController extends Controller
      */
     public function show(Prescription $prescription)
     {
-        return view('prescription.show', compact('prescription'));
+        $drugs = Drug::all();
+
+        // $quotations = Quotation::where('prescription_id', $prescription->id)->get();
+
+        $quotations = Quotation::where('prescription_id', $prescription->id)
+            ->with('drug')
+            ->get();
+
+        return view('admin.prescription.show', compact('prescription', 'drugs', 'quotations'));
     }
 
     /**
