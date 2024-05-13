@@ -15,18 +15,13 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    @unless (auth()->user()->hasRole('admin'))
-                        <x-nav-link :href="route('prescription.index')" :active="request()->routeIs('prescription.index')">
-                            {{ __('Prescriptions') }}
-                        </x-nav-link>
-                    @endunless
-                    <x-nav-link :href="route('prescription.index')" :active="request()->routeIs('prescription.index')">
+                    <x-nav-link :href="route('admin.prescription.index')" :active="request()->routeIs('admin.prescription.index')">
                         {{ __('Prescription') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('quotation.index')" :active="request()->routeIs('quotation.index')">
+                    <x-nav-link :href="route('admin.quotation.index')" :active="request()->routeIs('admin.quotation.index')">
                         {{ __('Quotation') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.drug.index')" :active="request()->routeIs('drug.index')">
+                    <x-nav-link :href="route('admin.drug.index')" :active="request()->routeIs('admin.drug.index')">
                         {{ __('Drug') }}
                     </x-nav-link>
                 </div>
@@ -84,13 +79,13 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('prescription.index')" :active="request()->routeIs('prescription.index')">
+            <x-responsive-nav-link :href="route('admin.prescription.index')" :active="request()->routeIs('admin.prescription.index')">
                 {{ __('Prescription') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('quotation.index')" :active="request()->routeIs('quotation.index')">
+            <x-responsive-nav-link :href="route('admin.quotation.index')" :active="request()->routeIs('admin.quotation.index')">
                 {{ __('Quotation') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.drug.index')" :active="request()->routeIs('drug.index')">
+            <x-responsive-nav-link :href="route('admin.drug.index')" :active="request()->routeIs('admin.drug.index')">
                 {{ __('Drug') }}
             </x-responsive-nav-link>
         </div>
