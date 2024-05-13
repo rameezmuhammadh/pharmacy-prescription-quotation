@@ -70,7 +70,11 @@
                                 </td>
                                 <td
                                     class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center text-blueGray-700 ">
-                                    
+                                  
+                                    <a class="text-indigo-700 hover:text-blue-900 font-bold mx-4 px-2"
+                                        href="{{ route('admin.prescription.show', $prescription->id) }}">
+                                        Show
+                                    </a>
                                     {{--  delete function --}}
                                     <form action="{{ route('prescription.destroy', $prescription->id) }}" method="POST">
                                         @csrf
