@@ -1,7 +1,7 @@
 <div>
     <p><b>Hello,</b>
         <br>
-        A new prescription has been uploaded. Please take the necessary actions accordingly.
+        User {{$data['status']}} your quoation.
         <br>
         Please take the necessary actions accordingly.
         <br />
