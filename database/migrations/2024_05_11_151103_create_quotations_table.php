@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('prescription_id')->constrained()->cascadeOnDelete();
-            $table->json('drugs');
+            $table->foreignId('drug_id')->constrained();
+            $table->string('quantity');
             $table->enum('status', ['accept', 'reject'])->nullable();
             $table->string('total_price');
             $table->timestamps();
