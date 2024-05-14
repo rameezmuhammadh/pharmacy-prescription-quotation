@@ -30,7 +30,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::resource('drug',AdminDrugController::class);
     Route::resource('prescription',AdminPrescriptionController::class);
     Route::resource('quotation',AdminQuotationController::class);
-    Route::get('/send-quotation', [AdminQuotationController::class, 'sendQuotation'])->name('quotation.send');
+    Route::post('/send-quotation', [AdminQuotationController::class, 'sendQuotation'])->name('quotation.send');
 });
 
 
