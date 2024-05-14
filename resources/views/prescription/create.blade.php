@@ -60,9 +60,11 @@
                             <x-input-error :messages="$errors->get('delivery_time')" class="mt-2" />
                         </div>
 
+                        <div class="mt-4 flex justify-end">
                         <x-primary-button class="ms-4">
                             {{ __('Save') }}
                         </x-primary-button>
+                        </div>
                     </form>
                 </div>
             </div>
