@@ -13,7 +13,7 @@ class DrugController extends Controller
      */
     public function index()
     {
-        $drugs = Drug::latest()->paginate(10)->OnEachSide(1);
+        $drugs = Drug::paginate(10)->OnEachSide(1);
 
         return view('admin.drug.index', compact('drugs'));
     }
