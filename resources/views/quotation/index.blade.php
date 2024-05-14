@@ -1,4 +1,4 @@
-<x-user-layout>
+<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Quotations') }}
@@ -12,20 +12,20 @@
                         <thead>
                             <tr>
                                 <th
-                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                     ID
                                 </th>
                                 <th
-                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                     Precription ID
                                 </th>
                                 <th
-                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                     Status
                                 </th>
 
                                 <th
-                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                     Actions
                                 </th>
                             </tr>
@@ -34,31 +34,23 @@
                             @forelse ($quotations as $quotation)
                             <tr>
                                 <td
-                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-center text-blueGray-700">
                                     {{ $quotation->id }}
                                 </td>
                                 <td
-                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-center text-blueGray-700">
                                     {{ $quotation->prescription_id }}
                                 </td>
                                 <td
-                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                                    {{ $quotation->status }}
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-center text-blueGray-700">
+                                    {{ $quotation->status ?? ($quotation->prescription_id ? 'Pending' : 'empty') }}
                                 </td>
                                 <td
-                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center text-blueGray-700 ">
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-center text-blueGray-700 ">
                                     <a class="text-indigo-700 hover:text-blue-900 font-bold mx-4 px-2"
                                         href="{{ route('quotation.edit', $quotation->id) }}">
-                                        Edit
+                                        Update Status
                                     </a>
-                                    {{-- delete function --}}
-                                    <form action="{{ route('quotation.destroy', $quotation->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="text-red-700 hover:text-red-900 font-bold mx-2 px-2">
-                                            Delete
-                                        </button>
-                                    </form>
                                 </td>
                             </tr>
                             @empty
@@ -72,4 +64,4 @@
             </div>
         </div>
     </div>
-</x-user-layout>
+</x-app-layout>
