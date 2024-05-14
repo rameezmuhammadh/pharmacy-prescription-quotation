@@ -48,10 +48,20 @@
                                             
                                         </tr>
                                         @endforeach
+                                        @php
+                                        $totalPrice = 0;
+                                        foreach($quotations as $quotation) {
+                                        // Check if the current quotation belongs to the desired prescription ID
+                                        if ($quotation->prescription_id == $prescription->id) {
+                                        // Add the total price of the current quotation to the total price
+                                        $totalPrice += $quotation->total_price;
+                                        }
+                                        }
+                                        @endphp
                                         <tr class="flex justify-end" colspan="4">
                                             <td class="text-bold">
                                                 <hr class="my-4 bg-slate-600 h-1">
-                                                Total:
+                                                Total:{{$totalPrice}}
                                             </td>
                                         </tr>
                                     </tbody>

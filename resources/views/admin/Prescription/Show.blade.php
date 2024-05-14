@@ -52,26 +52,38 @@
                                         <tr>
                                             <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                                                {{ $quotation->drug->name }}    
+                                                {{ $quotation->drug->name }}
                                             </td>
-                                                <td
+                                            <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                                                {{ $quotation->drug->price }} * {{ $quotation->quantity }}  
+                                                {{ $quotation->drug->price }} * {{ $quotation->quantity }}
                                             </td>
                                             <td
-                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                                              {{ $quotation->total_price }}
-                                         
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                                                {{ $quotation->total_price }}
+
                                             </td>
                                             <td
-                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                                            Del</td>
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                                                Del</td>
                                         </tr>
                                         @endforeach
+                                        <!-- Add this code at the top of your Blade file -->
+                                        @php
+                                        $totalPrice = 0;
+                                        foreach($quotations as $quotation) {
+                                        // Check if the current quotation belongs to the desired prescription ID
+                                        if ($quotation->prescription_id == $prescription->id) {
+                                        // Add the total price of the current quotation to the total price
+                                        $totalPrice += $quotation->total_price;
+                                        }
+                                        }
+                                        @endphp
+
                                         <tr class="flex justify-end" colspan="4">
                                             <td class="text-bold">
                                                 <hr class="my-4 bg-slate-600 h-1">
-                                                Total:  
+                                                Total:{{$totalPrice}}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -115,7 +127,7 @@
 
                                         {{ __('Send Quations') }}
                                     </x-primary-button>
-                            </form>
+                                </form>
                             </div>
                         </div>
                     </div>
