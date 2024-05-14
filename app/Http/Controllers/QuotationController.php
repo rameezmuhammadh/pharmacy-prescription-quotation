@@ -82,7 +82,7 @@ class QuotationController extends Controller
         }
 
 
-        return redirect()->route('quotation.index');
+        return redirect()->route('prescription.index');
     }
 
     /**

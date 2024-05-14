@@ -17,8 +17,8 @@ class QuotationController extends Controller
      */
     public function index()
     {
-         $quotations = Quotation::all();
-          return view('admin.quotation.index',compact('quotations'));
+        $quotations = Quotation::all();
+        return view('admin.quotation.index', compact('quotations'));
     }
 
     /**
@@ -50,7 +50,6 @@ class QuotationController extends Controller
         Quotation::create($validated);
 
         return redirect()->back();
-        
     }
 
     /**
@@ -85,15 +84,25 @@ class QuotationController extends Controller
         //
     }
 
-        public function sendQuotation()
-        {
-            $prescription = Prescription::find(['prescription_id']);
-            $userEmail = $prescription->user->email;
+    public function sendQuotation(Request $request)
+    {
 
-            Mail::to($userEmail)->send(new QuotationMail());
-            
+        // Retrieve the prescription ID from the form submission
+        $prescriptionId = $request->input('prescription_id');
 
-            return redirect()->route('admin.prescription.index');
-        }
-    
+        // Find the prescription by its ID
+        $prescription = Prescription::find($prescriptionId);
+
+        // $prescription = Prescription::find(['prescription_id']);
+        // $userEmail = $prescription->user->email;
+        $userEmail = $prescription->user->email;
+
+        // Send the quotation email to the user
+        Mail::to($userEmail)->send(new QuotationMail());
+
+  
+
+
+        return redirect()->route('admin.prescription.index');
+    }
 }
