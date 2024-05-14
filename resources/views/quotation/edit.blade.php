@@ -63,8 +63,8 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="mt-4 ">
-                                        <x-input-label for="drug_id" :value="__('Drug')" />
-                                        <select name="drug_id" id=""
+                                        <x-input-label for="status" :value="__('Status')" />
+                                        <select name="status" id=""
                                             class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                             <option value="">Accept / Reject</option>
                                             <option value="accept">Accept </option>
