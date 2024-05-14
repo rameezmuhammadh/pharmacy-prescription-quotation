@@ -17,7 +17,9 @@ class QuotationController extends Controller
      */
     public function index()
     {
-        $quotations = Quotation::all();
+
+
+        $quotations = Quotation::groupBy('prescription_id')->get();
         return view('admin.quotation.index', compact('quotations'));
     }
 
@@ -100,7 +102,7 @@ class QuotationController extends Controller
         // Send the quotation email to the user
         Mail::to($userEmail)->send(new QuotationMail());
 
-  
+
 
 
         return redirect()->route('admin.prescription.index');
